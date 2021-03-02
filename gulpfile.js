@@ -37,7 +37,7 @@ function commit() {
 
 function push(){
     console.log('pushing...');
-    git.push('origin', 'master', function (err) {
+    git.push('main', 'master', function (err) {
       if (err) throw err;
     });
 };
