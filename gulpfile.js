@@ -35,12 +35,12 @@ function commit() {
     }
 };
 
-function push(done){
+async function push(){
     console.log('pushing...');
     git.push('main', 'master', function (err) {
       if (err) throw err;
     });
-    done();
+    
 };
 
 exports.gitsend = series(add, commit, push);
