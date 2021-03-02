@@ -1,7 +1,8 @@
-const{watch, src, dest} = require('gulp');
+const{watch, src, dest, series} = require('gulp');
 const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const git = require('gulp-git');
+const argv = require('yargs').argv;
 
 function minifyCSS(){
     return src('style/*.css')
@@ -22,14 +23,14 @@ function defaultTask(){
 
 function add() {
     console.log('adding...');
-    return gulp.src('.')
+    return src('.')
       .pipe(git.add());
 };
 
 function commit() {
     console.log('commiting');
     if (argv.m) {
-      return gulp.src('.')
+      return src('.')
         .pipe(git.commit(argv.m));
     }
 };
@@ -41,6 +42,5 @@ function push(){
     });
 };
 
-exports.gitsend = series(add)
-
+exports.gitsend = series(add, commit, push);
 exports.default = defaultTask
