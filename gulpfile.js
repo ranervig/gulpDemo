@@ -40,7 +40,6 @@ async function push(){
     git.push('main', 'master', function (err) {
       if (err) throw err;
     });
-    
 };
 
 exports.gitsend = series(add, commit, push);

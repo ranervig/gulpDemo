@@ -215,6 +215,9 @@ window.addEventListener("load", async () => {
     previewImage(event);
   })
 
+
+
+  
   document.querySelector('#addIngredient').addEventListener("click", addIngredient);
 
   document.querySelector('#addInstruction').addEventListener("click", addInstruction);
